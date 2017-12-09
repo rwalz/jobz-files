@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./jobzpostcss.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>JOBZ</title>
+</head>
+<body>
+
+
+<script>
+var joblist = [];
+
+
+
+
+function Job(jt, f, s, c, d) {
+    this.jobTitle = jt;
+    this.field = f;
+    this.state = s;
+    this.county = c;
+    this.description = d;
+  
+}
+
+
+
+// Function called when the form is submitted.
+
+function createJob() {
+'use strict';
+  
+ var j = new Job(); 
+  
+ var i1 = document.getElementById('input1').value;
+ var i2 = document.getElementById('input2').value;
+ var i3 = document.getElementById('input3').value;
+ var i4 = document.getElementById('input4').value;
+ var i5 = document.getElementById('input5').value;
+ 
+j['jobTitle'] = i1;  
+j.field       = i2;
+j['state']    = i3;
+j['county']   = i4;
+j['description'] = i5;
+  
+joblist.push(j);  
+
+console.log(j);
+console.log(joblist);
+  
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+    // Store
+    localStorage.setItem("record", joblist);
+ }
+
+  
+} // End of createJob() function.
+function init() {
+'use strict';
+document.getElementById('theForm').onsubmit = createJob;  
+} // End of init() function.
+window.onload = init;
+</script>
+
+
+
+
+
+
+
+
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="jobzhome.html" class="w3-bar-item w3-button w3-wide">JOBZ</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="jobzsearch.html" class="w3-bar-item w3-button"><i class="fa fa-search"></i> SEARCH</a>
+      <a href="jobzpost.html" class="w3-bar-item w3-button"><i class="fa fa-telegram"></i> POST</a>
+      <a href="jobzlogin.html" class="w3-bar-item w3-button"><i class="fa fa-sign-in"></i> LOGIN</a>
+      <a href="jobzcreate.html" class="w3-bar-item w3-button"><i class="fa fa-cog"></i> CREATE ACCOUNT</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-topmiddle w3-text-teal" style="padding:48px">
+    <span class="w3-jumbo w3-hide-small">Post A New Job</span><br>
+    <span class="w3-xxlarge w3-hide-large w3-hide-medium">Post A New Job</span><br>
+  </div> 
+  
+</header>
+  
+  
+  
+  
+  <div class="w3-row-padding">
+
+<div class="">
+<form class="w3-container w3-card-4" action="" method="get" id="theForm">
+  <h2>Please Complete The Form</h2>
+  <div class="w3-section">      
+    <input class="w3-input" type="text" required>
+    <label>Job Title</label>
+  </div>
+  <div class="w3-section">      
+    <select>
+  <option value="compandtech">Computers and Technology</option>
+  <option value="health">Health Care</option>
+  <option value="edu">Education and Social Services</option>
+  <option value="artscom">Arts and Communications</option>
+  <option value="trans">Trades and Transportation</option>
+  <option value="business">Management, Business, and Finance</option>
+  <option value="eng">Architecture and Civil Engineering</option>
+  <option value="sci">Science</option>
+  <option value="serv">Hospitality, Tourism, and the Service Industry</option>
+  <option value="law">Law and Law Enforcement</option>
+</select>
+    <label>Field</label>
+  </div>
+  
+  <div class="w3-section">      
+  <select>
+  <option value="alabama">AL</option>
+  <option value="alaska">AK</option>
+  <option value="arizona">AZ</option>
+  <option value="arkansas">AR</option>
+  <option value="cali">CA</option>
+  <option value="colorado">CO</option>
+    </select>
+    <label>State</label>
+  
+  </div>
+  
+  <div class="w3-section">      
+    <select>
+  <option value="any">Any</option>
+    </select>
+    <label>County</label>
+  </div>
+
+ 
+
+  <div class="w3-half">
+    <input id="hourly" class="w3-radio" type="radio" name="hourly" value="hourly">
+    <label> Hourly</label>
+    <br>
+    <input id="flatrate" class="w3-radio" type="radio" name="flatrate" value="flatrate">
+    <label>Flat Rate</label>
+    <br>
+    <input id="tbd" class="w3-radio" type="radio" name="tbd" value="tbd">
+    <label> Undecided</label>
+    <br><br>
+    
+    <label> Job Description:</label>
+    <textarea rows="20" cols="200">
+</textarea>
+    
+    <br><br><input type="submit" value="Submit"><br><br>
+  </div>
+  </div>
+</form>
+</div>
+
+
+
+
+
+
+
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+  <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">×</span>
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+    <img id="img01" class="w3-image">
+    <p id="caption" class="w3-opacity w3-large"></p>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <p> Developed by Reid Walz </p>
+  
+</footer>
+ 
+
+
+
+
+
+</body>
+</html>
